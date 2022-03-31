@@ -51,14 +51,18 @@ module "modzy" {
     "subnet-0333333333333333c"
   ]
 
-  worker_ami_id = "ami-workeramiid123"
+  # Examine the following AWS SSM parameters for latest CPU and GPU AMI IDs
+  # CPU AMI Id - /aws/service/eks/optimized-ami/1.21/amazon-linux-2/recommended/image_id
+  # GPU AMI Id - /aws/service/eks/optimized-ami/1.21/amazon-linux-2-gpu/recommended/image_id
+
+  worker_ami_id = "<CPU AMI Id>"
 
   ec2_keypair_name = "modzy-nodes"
 
   model_node_groups = [
     {
       name = "small-cpu"
-      ami_id = "ami-CPUamiid123"
+      ami_id = "<CPU AMI Id>"
       instance_type = "m5.large"
       asg_desired_capacity = 0
       asg_min_size = 0
@@ -66,7 +70,7 @@ module "modzy" {
     },
     {
       name = "medium-cpu"
-      ami_id = "ami-CPUamiid123"
+      ami_id = "<CPU AMI Id>"
       instance_type = "m5.xlarge"
       asg_desired_capacity = 0
       asg_min_size = 0
@@ -74,7 +78,7 @@ module "modzy" {
     },
     {
       name = "large-cpu"
-      ami_id = "ami-CPUamiid123"
+      ami_id = "<CPU AMI Id>"
       instance_type = "m5.2xlarge"
       asg_desired_capacity = 0
       asg_min_size = 0
@@ -82,7 +86,7 @@ module "modzy" {
     },
     {
       name = "small-gpu"
-      ami_id = "ami-GPUamiid123"
+      ami_id = "<GPU AMI Id>"
       instance_type = "g4dn.xlarge"
       asg_desired_capacity = 0
       asg_min_size = 0
@@ -90,7 +94,7 @@ module "modzy" {
     },
     {
       name = "medium-gpu"
-      ami_id = "ami-GPUamiid123"
+      ami_id = "<GPU AMI Id>"
       instance_type = "p2.xlarge"
       asg_desired_capacity = 0
       asg_min_size = 0
